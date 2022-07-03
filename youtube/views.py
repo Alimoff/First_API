@@ -41,7 +41,7 @@ class VideosViews(APIView):
     def patch(self, request):
         videos = Videos.objects.get(id=request.data["id"])
 
-        serialized_data = VideosSerializer(Videos, data=request.data, partial=True)
+        serialized_data = VideosSerializer(videos, data=request.data, partial=True)
 
         if serialized_data.is_valid():
             serialized_data.save()
